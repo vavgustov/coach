@@ -1,0 +1,33 @@
+<h1 class="title">Words</h1>
+
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr>
+      <th>EN</th>
+      <th>RU</th>
+      <th width="5%">S</th>
+      <th width="5%">F</th>
+      <th colspan="3" width="20%">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= word.en %></td>
+        <td><%= word.ru %></td>
+        <td><%= word.success %></td>
+        <td><%= word.failures %></td>
+        <td><%= link_to 'Show', word %></td>
+        <td><%= link_to 'Edit', edit_word_path(word) %></td>
+        <td><%= link_to 'Destroy', word, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @words %>
+
+<hr/>
+
+<%= link_to 'New Word', new_word_path, class: 'button is-primary' %>

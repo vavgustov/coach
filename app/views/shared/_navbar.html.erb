@@ -1,0 +1,22 @@
+<nav class="navbar is-transparent">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <%= link_to 'Coach', root_path, class: 'navbar-item' %>
+      <div class="navbar-burger burger" data-target="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="nav-menu" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <% @navbar_items.each do |item| %>
+            <%= link_to item[:title], item[:path], class: "navbar-item #{is_active_page(item[:path])}" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

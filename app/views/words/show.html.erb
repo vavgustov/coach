@@ -1,0 +1,14 @@
+<p>
+  <strong>En:</strong>
+  <%= @word.en %>
+</p>
+
+<p>
+  <strong>Ru:</strong>
+  <%= @word.ru %>
+</p>
+
+<hr/>
+
+<%= link_to 'Edit', edit_word_path(@word), class: 'button is-link' %>
+<%= link_to 'Back', words_path, class: 'button is-text' %>

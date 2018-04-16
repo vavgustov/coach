@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_13_180140) do
+ActiveRecord::Schema.define(version: 2018_04_16_163240) do
+
+  create_table "statistics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "result"
+    t.integer "amount", default: 0
+    t.date "date"
+    t.index ["result", "date"], name: "index_statistics_on_result_and_date", unique: true
+  end
 
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "en"

@@ -27,7 +27,8 @@ class WordsController < ApplicationController
 
   def update
     if @word.update(word_params)
-      redirect_to @word, notice: 'Word was successfully updated.'
+      flash[:notice] = "Translation for word '#{word_params[:en]}' has been set to '#{word_params[:ru]}'!"
+      redirect_to root_path
     else
       render :edit
     end

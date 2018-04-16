@@ -6,8 +6,12 @@ class ApplicationController < ActionController::Base
   def set_navbar_items
     @navbar_items = [
       {
-        title: 'Training',
-        path: trainer_index_path
+        title: 'Settings',
+        path: words_path
+      },
+      {
+        title: 'Vocabularies',
+        path: words_path
       }
     ]
   end

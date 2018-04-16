@@ -1,8 +1,9 @@
 <h1 class="title has-text-centered">Select correct translation</h1>
 
 <div class="columns">
-  <div class="column is-one-quarter is-offset-one-quarter is-size-3 has-vertical-centered">
-    Word:&nbsp;<span class="has-text-weight-bold"><%= @word.en %></span>
+  <div class="column is-one-quarter is-offset-one-quarter" style="display: flex; flex-flow: column; justify-content: center;">
+    <h2 class="is-size-3">Word:&nbsp;<span class="has-text-weight-bold"><%= @word.en %></span></h2>
+    <p>Popularity: <%= @word.popularity %></p>
   </div>
   <div class="column is-one-quarter">
     <div class="menu">

@@ -10,12 +10,16 @@
     </div>
 
     <div id="nav-menu" class="navbar-menu">
-      <div class="navbar-end">
+      <div class="navbar-start">
         <div class="navbar-item">
-          <% @navbar_items.each do |item| %>
-            <%= link_to item[:title], item[:path], class: "navbar-item #{is_active_page(item[:path])}" %>
-          <% end %>
+          S:&nbsp;<span class="has-text-success has-text-weight-bold"><%= Statistic.today_success %></span>&nbsp;
+          F:&nbsp;<span class="has-text-danger has-text-weight-bold"><%= Statistic.today_failures %></span>
         </div>
+      </div>
+      <div class="navbar-end">
+        <% @navbar_items.each do |item| %>
+          <%= link_to item[:title], item[:path], class: "navbar-item #{is_active_page(item[:path])}" %>
+        <% end %>
       </div>
     </div>
   </div>

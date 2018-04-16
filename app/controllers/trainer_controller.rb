@@ -1,6 +1,3 @@
-# TODO: add feature for failures/etc
-# TODO: add today stats (s/f) to navbar
-
 class TrainerController < ApplicationController
   before_action :set_words, only: :index
   before_action :set_translation, only: :index
@@ -15,11 +12,14 @@ class TrainerController < ApplicationController
 
   def check
     if @matched
-      flash[:success] = "Success! #{@message}"
+      flash[:success] = "Success! #{@message}."
+      @word.update!(success: @word.success + 1)
     else
       flash[:error] = "Whoops! #{@message}. Your answer: '#{@answer.ru}'."
+      @word.update!(failures: @word.failures + 1)
     end
-    redirect_to trainer_index_path
+    Statistic.update_stats!(@matched ? :success : :failures)
+    redirect_to root_path
   end
 
   private
@@ -42,7 +42,7 @@ class TrainerController < ApplicationController
 
   def set_answers
     candidates = Word.select(:id, :ru).where.not({ru: nil, id: @word.id})
-    redirect_to trainer_index_path if candidates.size < ANSWERS_COUNT
+    redirect_to root_path if candidates.size < ANSWERS_COUNT
     @answers = candidates.sample(ANSWERS_COUNT - 1)
     @answers << { id: @word.id, ru: @word.ru }
     @answers.shuffle!

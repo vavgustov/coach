@@ -2,7 +2,8 @@ $variable-columns: false;
 
 @import "~bulma/bulma";
 
-.has-vertical-centered {
-  align-items: center;
+.word-info {
   display: flex;
+  flex-flow: column;
+  justify-content: center;
 }

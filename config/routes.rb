@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :words
-  get 'dashboard/index'
-
+  get 'trainer/index'
+  get 'trainer/check'
   root 'words#index'
 end

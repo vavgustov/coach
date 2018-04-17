@@ -34,20 +34,18 @@ class WordsController < ApplicationController
     end
   end
 
-  # DELETE /words/1
   def destroy
     @word.destroy
     redirect_to words_url, notice: 'Word was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_word
-      @word = Word.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def word_params
-      params.require(:word).permit(:en, :ru)
-    end
+  def set_word
+    @word = Word.find(params[:id])
+  end
+
+  def word_params
+    params.require(:word).permit(:en, :ru)
+  end
 end

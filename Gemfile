@@ -12,6 +12,7 @@ gem 'webpacker'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'faraday', '~> 0.14.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

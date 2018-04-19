@@ -1,11 +1,15 @@
 <h1 class="title has-text-centered">Select translation</h1>
 
 <div class="columns">
-  <div class="column is-one-quarter is-offset-one-quarter word-info">
+  <div class="column is-4 is-offset-2 word-info">
     <h2 class="is-size-3">Word:&nbsp;<span class="has-text-weight-bold"><%= @word.en %></span></h2>
     <p>Popularity: <%= @word.popularity %></p>
+    <% if @recently_failed %>
+      <hr>
+      <p><span class="has-text-danger">Recently failed:</span> <%= @failure.date %></p>
+    <% end %>
   </div>
-  <div class="column is-one-quarter">
+  <div class="column is-4">
     <div class="menu">
       <p class="menu-label">
         Answers

@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_16_163240) do
+ActiveRecord::Schema.define(version: 2018_04_18_184312) do
+
+  create_table "failures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "word_id"
+    t.date "date"
+    t.index ["word_id"], name: "index_failures_on_word_id"
+  end
 
   create_table "statistics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "result"
@@ -27,4 +33,5 @@ ActiveRecord::Schema.define(version: 2018_04_16_163240) do
     t.integer "failures", default: 0
   end
 
+  add_foreign_key "failures", "words"
 end

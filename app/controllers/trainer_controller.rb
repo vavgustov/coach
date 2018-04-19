@@ -8,14 +8,12 @@ class TrainerController < ApplicationController
   end
 
   def check
+    @word.update_stat!(@matched)
     if @matched
       flash[:success] = "Success! #{@message}."
-      @word.update!(success: @word.success + 1)
     else
       flash[:error] = "Whoops! #{@message}. Your answer: '#{@answer.ru}'."
-      @word.update!(failures: @word.failures + 1)
     end
-    Statistic.update_stats!(@matched ? :success : :failures)
     redirect_to root_path
   end
 end

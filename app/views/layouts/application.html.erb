@@ -4,7 +4,11 @@
   <title>Coach</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%= tag("meta", name: "viewport", content: "width=device-width, initial-scale=1") %>
   <%= tag("meta", name: "apple-mobile-web-app-capable", content: "yes") %>
+
+  <%= favicon_link_tag asset_pack_path('images/favicon.ico') %>
+  <%= render 'shared/apple_touch_icons' %>
 
   <%= stylesheet_pack_tag 'application' %>
 </head>

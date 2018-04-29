@@ -12,4 +12,20 @@ import '../images/apple-touch-icons/apple-touch-icon-144x144.png'
 import '../images/apple-touch-icons/apple-touch-icon-152x152.png'
 import '../images/apple-touch-icons/apple-touch-icon-180x180.png'
 
-start()
+document.addEventListener('DOMContentLoaded', () => {
+  start()
+
+  // navbar toggle
+  // based on https://bulma.io/documentation/components/navbar/
+  let $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)
+  if ($navbarBurgers.length > 0) {
+    $navbarBurgers.forEach($el => {
+      $el.addEventListener('click', () => {
+        let target = $el.dataset.target
+        let $target = document.getElementById(target)
+        $el.classList.toggle('is-active')
+        $target.classList.toggle('is-active')
+      })
+    })
+  }
+})

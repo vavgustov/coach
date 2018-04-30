@@ -2,6 +2,10 @@
   <div class="container is-fluid">
     <div class="navbar-brand">
       <%= link_to 'Coach', root_path, class: 'navbar-item' %>
+      <div class="navbar-item">
+        S:&nbsp;<span class="has-text-success has-text-weight-bold"><%= Statistic.today_success %></span>&nbsp;
+        F:&nbsp;<span class="has-text-danger has-text-weight-bold"><%= Statistic.today_failures %></span>
+      </div>
       <div class="navbar-burger burger" data-target="nav-menu">
         <span></span>
         <span></span>
@@ -10,12 +14,6 @@
     </div>
 
     <div id="nav-menu" class="navbar-menu">
-      <div class="navbar-start">
-        <div class="navbar-item">
-          S:&nbsp;<span class="has-text-success has-text-weight-bold"><%= Statistic.today_success %></span>&nbsp;
-          F:&nbsp;<span class="has-text-danger has-text-weight-bold"><%= Statistic.today_failures %></span>
-        </div>
-      </div>
       <div class="navbar-end">
         <% @navbar_items.each do |item| %>
           <%= link_to item[:title], item[:path], class: "navbar-item #{is_active_page(item[:path])}" %>

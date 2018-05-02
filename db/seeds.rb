@@ -1,19 +1,19 @@
 module Seeder
-  START_LINE = 100
-  END_LINE = 1000
+  USE_INTERVAL = false
+  START_ID = 100
+  END_ID = 105
   WORD_MIN_LENGTH = 2
   WORDS_PATH = Rails.root.join('public', 'google-10000-english-usa.txt').freeze
 
   class << self
     def run
       words = File.open WORDS_PATH
-      line_number = 1
-      words.each_line do |word|
-        current_line = line_number
-        line_number = line_number + 1
-        next if current_line < START_LINE
-        break if current_line > END_LINE
-        create_word(word, current_line)
+      words.each_line.with_index(1) do |word, id|
+        if USE_INTERVAL
+          next if id < START_ID
+          break if id > END_ID
+        end
+        create_word(word, id)
       end
     end
 

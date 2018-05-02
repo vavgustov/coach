@@ -1,9 +1,6 @@
 module WordQuestion
   extend ActiveSupport::Concern
 
-  COMPLETE_DELTA = 5
-  ANSWERS_COUNT = 5
-
   private
 
   def generate_question
@@ -19,15 +16,16 @@ module WordQuestion
   end
 
   def set_recently_failed_word
-    @failure = Failure.where('date > ?', 1.day.ago).sample
-    if @failure.word.success - @failure.word.failures < COMPLETE_DELTA
+    @failure = Failure.recent.sample
+    return if @failure.nil?
+    if @failure.word.success - @failure.word.failures < Word::COMPLETE_DELTA - Failure::REPEAT
       @word = @failure.word
       @recently_failed = true
     end
   end
 
   def set_random_word
-    @word = Word.where('success - failures < ?', COMPLETE_DELTA).sample
+    @word = Word.random
     if @word.nil?
       flash[:success] = 'All words completed!'
       redirect_to root_path
@@ -42,11 +40,8 @@ module WordQuestion
   end
 
   def set_answers
-    candidates = Word.select(:id, :ru).where.not({ ru: nil, id: @word.id })
-    redirect_to root_path if candidates.size < ANSWERS_COUNT
-    @answers = candidates.sample(ANSWERS_COUNT - 1)
-    @answers << { id: @word.id, ru: @word.ru }
-    @answers.shuffle!
+    @answers = Word.answers(@word)
+    redirect_to root_path if @answers.size < Word::ANSWERS_COUNT
   end
 
   def check_words

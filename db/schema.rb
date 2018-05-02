@@ -33,5 +33,5 @@ ActiveRecord::Schema.define(version: 2018_04_18_184312) do
     t.integer "failures", default: 0
   end
 
-  add_foreign_key "failures", "words"
+  add_foreign_key "failures", "words", on_delete: :cascade
 end

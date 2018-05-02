@@ -22,4 +22,8 @@ module ApplicationHelper
   def is_active_page(path)
     current_page?(path) ? 'is-active' : ''
   end
+
+  def friendly_date(date)
+    date.strftime("%d/%m/%y")
+  end
 end

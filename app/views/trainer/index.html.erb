@@ -6,7 +6,8 @@
     <p>Popularity: <%= @word.popularity %></p>
     <% if @recently_failed %>
       <hr>
-      <p><span class="has-text-danger">Recently failed:</span> <%= @failure.date %></p>
+      <p><span class="has-text-danger has-text-weight-bold">Recently failed:</span> <%= friendly_date(@failure.date) %></p>
+      <p><%= render partial: 'shared/stats', locals: { s_count: @word.success, f_count: @word.failures } %></p>
     <% end %>
   </div>
   <div class="column is-4">

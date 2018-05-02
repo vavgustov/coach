@@ -1,10 +1,10 @@
+<!-- navbar -->
 <nav class="navbar has-shadow">
   <div class="container">
     <div class="navbar-brand">
       <%= link_to 'Coach', root_path, class: 'navbar-item' %>
       <div class="navbar-item">
-        S:&nbsp;<span class="has-text-success has-text-weight-bold"><%= Statistic.today_success %></span>&nbsp;
-        F:&nbsp;<span class="has-text-danger has-text-weight-bold"><%= Statistic.today_failures %></span>
+        <%= render partial: 'shared/stats', locals: { s_count: Statistic.today_success, f_count: Statistic.today_failures } %>
       </div>
       <div class="navbar-burger burger" data-target="nav-menu">
         <span></span>

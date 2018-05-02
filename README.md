@@ -10,8 +10,8 @@ Foreign words training. At this moment supports just EN-RU.
 - [Yandex API key](#yandex-api-key)
 
 ## Features
-* Recently failed words have higher probability of showing.
-* Daily stats for successful and wrong answers. 
+* Recently failed words have higher probability of showing
+* Daily stats for successful and wrong answers 
 
 ## Yandex API key
 Open encrypted credentials:

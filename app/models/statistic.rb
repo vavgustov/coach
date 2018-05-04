@@ -1,7 +1,7 @@
 class Statistic < ApplicationRecord
   scope :today, -> { where(date: Date.today) }
   scope :today_success, -> { today.where(result: :success).first.try(:amount).to_i }
-  scope :today_failures, -> { today.where(result: :failures).first.try(:amount).to_i }
+  scope :today_failure, -> { today.where(result: :failure).first.try(:amount).to_i }
 
   class << self
     def update_stats!(result)

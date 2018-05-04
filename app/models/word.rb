@@ -4,7 +4,7 @@ class Word < ApplicationRecord
   COMPLETE_DELTA = 5
   ANSWERS_COUNT = 5
 
-  scope :random, -> { where('success - failures < ?', COMPLETE_DELTA).offset(rand(count)).first }
+  scope :random, -> { where('success - failure < ?', COMPLETE_DELTA).offset(rand(count)).first }
 
   class << self
     def answers(word)
@@ -18,9 +18,9 @@ class Word < ApplicationRecord
     if matched
       update!(success: success + 1)
     else
-      update!(failures: failures + 1)
+      update!(failure: failure + 1)
       Failure.save_result!(self)
     end
-    Statistic.update_stats!(matched ? :success : :failures)
+    Statistic.update_stats!(matched ? :success : :failure)
   end
 end

@@ -4,7 +4,7 @@
     <div class="navbar-brand">
       <%= link_to 'Coach', root_path, class: 'navbar-item' %>
       <div class="navbar-item">
-        <%= render partial: 'shared/stats', locals: { s_count: Statistic.today_success, f_count: Statistic.today_failures } %>
+        <%= render partial: 'shared/stats', locals: { s_count: Statistic.today_success, f_count: Statistic.today_failure } %>
       </div>
       <div class="navbar-burger burger" data-target="nav-menu">
         <span></span>

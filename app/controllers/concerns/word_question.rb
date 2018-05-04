@@ -18,7 +18,7 @@ module WordQuestion
   def set_recently_failed_word
     @failure = Failure.recent.sample
     return if @failure.nil?
-    if @failure.word.success - @failure.word.failures < Word::COMPLETE_DELTA - Failure::REPEAT
+    if @failure.word.success - @failure.word.failure < Word::COMPLETE_DELTA - Failure::REPEAT
       @word = @failure.word
       @recently_failed = true
     end

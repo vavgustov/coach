@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_18_184312) do
+ActiveRecord::Schema.define(version: 2018_05_04_113527) do
 
   create_table "failures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "word_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_04_18_184312) do
     t.string "ru"
     t.integer "popularity"
     t.integer "success", default: 0
-    t.integer "failures", default: 0
+    t.integer "failure", default: 0
   end
 
   add_foreign_key "failures", "words", on_delete: :cascade

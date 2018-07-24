@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 4.1'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -33,9 +33,9 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15', '< 4.0'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'capybara', '~> 3.4'
+  gem 'selenium-webdriver', '~> 3.13'
+  gem 'chromedriver-helper', '~> 1.2'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 gem 'rails', '~> 5.2.0'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'uglifier', '~> 4.1'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 

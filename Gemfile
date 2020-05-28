@@ -11,7 +11,7 @@ gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'kaminari', '~> 1.2'
 gem 'faraday', '~> 0.14.0'
 
 group :development, :test do
